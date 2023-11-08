@@ -1,11 +1,12 @@
 from django.shortcuts import render
+from django.views.generic import ListView
+from .models import Post
 
 
 # Create your views here.
-from django.http import HttpResponse
 
-def homepage(request):
-    return render(request,'home.html')
 
-def about(request):
-    return render(request,'about.html')
+class Home(ListView):
+    model = Post
+    template_name = 'home.html'
+    context_object_name = 'all_post_list'
